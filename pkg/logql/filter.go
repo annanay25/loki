@@ -53,7 +53,13 @@ type andFilter struct {
 
 // newAndFilter creates a new filter which matches only if left and right matches.
 func newAndFilter(left LineFilter, right LineFilter) LineFilter {
-	if (right == TrueFilter || right == nil) && (left == TrueFilter || left == nil) {
+	if right == nil {
+		right = TrueFilter
+	}
+	if left == nil {
+		left = TrueFilter
+	}
+	if right == TrueFilter && left == TrueFilter {
 		return TrueFilter
 	}
 	return andFilter{

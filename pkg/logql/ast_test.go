@@ -24,6 +24,7 @@ func Test_logSelectorExpr_String(t *testing.T) {
 		{`{foo="bar", bar!="baz"} |~ ""`, false},
 		{`{foo="bar", bar!="baz"} |~ ".*"`, false},
 		{`{foo="bar", bar!="baz"} |= "" |= ""`, false},
+		{`{foo="bar", bar!="baz"} |= "" |= "bip"`, true},
 		{`{foo="bar", bar!="baz"} |~ "" |= "" |~ ".*"`, false},
 	}
 
